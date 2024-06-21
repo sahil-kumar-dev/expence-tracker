@@ -64,7 +64,7 @@ const CreateBudget = () => {
                         <DialogDescription>
                             <div className="pt-4">
 
-                                <Button variant="outline" onclick={() => setOpenEmojiPicker(prev => !prev)} size="lg" className="text-lg">
+                                <Button variant="outline" onClick={() => setOpenEmojiPicker(prev => !prev)} size="lg" className="text-lg">
                                     {emojiIcon}
                                 </Button>
                                 <div className="absolute z-50">

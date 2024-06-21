@@ -8,6 +8,7 @@ import {
 } from '@clerk/nextjs'
 import "./globals.css";
 import { Toaster } from "sonner";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
