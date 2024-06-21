@@ -22,8 +22,8 @@ import { db } from '@/utils/dbConfig'
 
 const CreateBudget = () => {
 
-    const [emojiIcon, setEmojiIcon] = useState('')
-    const [openEmojiPicker, setOpenEmojiPicker] = useState(true)
+    const [emojiIcon, setEmojiIcon] = useState('😀')
+    const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
 
     const [Name, setName] = useState('')
     const [amount, setAmount] = useState('')
@@ -53,7 +53,7 @@ const CreateBudget = () => {
 
             <Dialog>
                 <DialogTrigger asChild>
-                    <div className="bg-slate-100 p-10 rounded-md items-center flex border-2 border-dashed cursor-pointer flex-col hover:shadow-md">
+                    <div className="bg-slate-100 p-10 h-full rounded-md items-center flex border-2 border-dashed cursor-pointer flex-col hover:shadow-md">
                         <h2 className='text-3xl '>+</h2>
                         <h2>Create new budget</h2>
                     </div>
@@ -64,7 +64,7 @@ const CreateBudget = () => {
                         <DialogDescription>
                             <div className="pt-4">
 
-                                <Button variant="outline" onclick={() => setOpenEmojiPicker(!openEmojiPicker)} size="lg" className="text-lg">
+                                <Button variant="outline" onclick={() => setOpenEmojiPicker(prev => !prev)} size="lg" className="text-lg">
                                     {emojiIcon}
                                 </Button>
                                 <div className="absolute z-50">
