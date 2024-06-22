@@ -69,7 +69,7 @@ const page = () => {
 					<h2 className='text-2xl font-bold'>Latest Budgets</h2>
 					{
 						budgetList && budgetList.map((budget, idx) => {
-							return <BudgetItem  {...budget} />
+							return <BudgetItem key={idx}  {...budget} />
 						})
 					}
 				</div>

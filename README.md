@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Overview
 
-## Getting Started
+This project is a personal finance management application designed to help users track and manage their expenses and budgets. The application is built using Next.js, a popular React-based framework for building server-rendered, statically generated, and performance-optimized websites and applications.
 
-First, run the development server:
+# Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Dashboard**: The dashboard provides a quick overview of the user's financial status, including their budgets and recent expenses.
+2. **Budget Management**: Users can view and manage their budgets, including the total spend and total items for each budget category.
+3. **Expense Tracking**: The application allows users to view their expenses, including the name, amount, and date of each expense.
+4. **Expense Management**: Users can delete expenses from their list.
+5. **Budget Item Details**: Users can view detailed information about each budget item, including the total spend and total items.
+6. **Bar Chart Dashboard**: A bar chart is provided to visually represent the user's budget distribution.
+7. **Expense List Table**: A table is provided to list all expenses, allowing users to easily view and manage their expenses.
+8. **Skeleton Loading**: A loading skeleton is displayed while data is being fetched, ensuring a smooth user experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Next.js**: The application is built using Next.js, a popular React-based framework for building server-rendered, statically generated, and performance-optimized websites and applications.
+2. **React**: The application uses React for building the user interface components.
+3. **Drizzle ORM**: Drizzle ORM is used for database operations, including selecting, inserting, updating, and deleting data.
+4. **Lucide**: Lucide is used for icons in the application.
+5. **Sonner**: Sonner is used for toast notifications.
+6. **React Loading Skeleton**: React Loading Skeleton is used for loading skeletons.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Installation and Setup
 
-## Learn More
+To set up the project, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository using `git clone <repository-url>`.
+2. Install the dependencies using `npm install` or `yarn install`.
+3. Start the development server using `npm run dev` or `yarn dev`.
+4. Open the application in your web browser at `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Contribution Guidelines
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions to the project are welcome. To contribute, follow these steps:
 
-## Deploy on Vercel
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Create a pull request to the original repository.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License.

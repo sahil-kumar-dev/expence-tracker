@@ -20,7 +20,6 @@ const CardsInfo = ({ budgetList }) => {
             total += Number(element.totalSpend)
         });
         setTotalSpend(total)
-        console.log(budgetList)
     }
 
     useEffect(()=>{
