@@ -25,6 +25,7 @@ import {
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import EditBudget from '../_components/EditBudget'
+import ExpensesSkeleton from '../_components/ExpensesSkeleton'
 
 
 const page = ({ params }) => {
@@ -48,7 +49,7 @@ const page = ({ params }) => {
             totalItems: sql`count(${Expenses.id})`.mapWith(Number)
         })
             .from(Budgets)
-            .leftJoin(Expenses, eq(Budgets.id, Expenses.budgedId))
+            .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
             .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
             .where(eq(Budgets.id, params.id))
             .groupBy(Budgets.id)
@@ -79,33 +80,36 @@ const page = ({ params }) => {
 
     return (
         <div>
-            <h2 className='text-2xl font-bold'>My Expenses</h2>
-            <span>
-
-                <AlertDialog>
-                    <AlertDialogTrigger aschild>
-                        <Button variant={'destructive'} className={'flex gap-2'}>
-                            <Trash /> Delete
-                        </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                                This action cannot be undone. This will permanently delete your current budget
-                                and remove your data from our servers.
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
-            </span>
-            <span className="">
-               <EditBudget budgetInfo={budgetInfo} refreshBudget={()=>getBudgetInfo()} />
-            </span>
+            <div className="flex justify-between py-6">
+                <h2 className='text-2xl font-bold'>My Expenses</h2>
+                <div className="flex gap-2">
+                    <span>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button variant={'destructive'} className={'flex gap-2'}>
+                                    <Trash /> Delete
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        This action cannot be undone. This will permanently delete your current budget
+                                        and remove your data from our servers.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    </span>
+                    <span>
+                        <EditBudget budgetInfo={budgetInfo} refreshBudget={() => getBudgetInfo()} />
+                    </span>
+                </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {
                     budgetInfo ?
@@ -117,7 +121,12 @@ const page = ({ params }) => {
             </div>
             <div className="">
                 <h2 className='font-bold text-lg'>Latest Expences</h2>
-                <ExpenseListTable expencesList={expencesList} />
+                {
+                    expencesList.length > 0 ?
+                        <ExpenseListTable expenceList={expencesList} />
+                        :
+                        <ExpensesSkeleton />
+                }
             </div>
         </div>
     )

@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import { Toaster } from "sonner";
 import 'react-loading-skeleton/dist/skeleton.css'
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,8 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang='en'>
         <body className={inter.className}>
-          <Toaster/>
+          <Toaster />
+          <NextTopLoader />
           {children}
         </body>
       </html>

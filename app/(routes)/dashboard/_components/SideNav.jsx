@@ -39,28 +39,21 @@ const SideNav = () => {
 
     const params = usePathname()
 
-    useEffect(() => {
-
-    })
 
     return (
-        <div className="h-screen border shadow-sm">
+        <div className="h-screen border shadow-sm p-5">
             <Image src="./logo.svg" height={100} width={160} />
-            <div className="mt-5 space-y-2">
+            <div className="mt-5 grid gap-4">
                 {
                     menuList.map((item, idx) => (
                         <Link href={item.path} key={item.id}>
-                            <button className={`flex gap-2 items-center text-gray-500 font-medium p-5 cursor-pointer rounded-md hover:bg-blue-100 hover:text-primary ${params == item.path && 'bg-blue-100 text-primary'}`}>
+                            <button className={`flex gap-2 items-center text-gray-500 font-medium p-5 cursor-pointer rounded-md hover:bg-blue-100 hover:text-primary ${params == item.path && 'bg-blue-100 text-primary'} w-40`}>
                                 <item.icon />
                                 {item.name}
                             </button>
                         </Link>
                     ))
                 }
-            </div>
-            <div className="fixed bottom-10 p-5 flex gap-2 items-center ">
-                <UserButton />
-                Profile
             </div>
         </div>
     )

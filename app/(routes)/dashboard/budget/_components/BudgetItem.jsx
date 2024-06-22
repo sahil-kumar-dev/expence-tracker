@@ -6,8 +6,6 @@ export const BudgetItem = ({ icon, name, totalItems, amount, totalSpend, id }) =
         return (totalSpend / amount) * 100
     }
 
-    console.log('name', name, 'totalItem:', totalItems, 'totalSpend', totalSpend)
-
     return (
         <Link href={"/dashboard/expenses/" + id}>
             <div className='p-5 border rounded-lg '>
@@ -21,16 +19,16 @@ export const BudgetItem = ({ icon, name, totalItems, amount, totalSpend, id }) =
                             </div>
                         </div>
                         <h2 className='font-bold text-primary'>
-                            {amount}
+                            &#8377;{amount}
                         </h2>
                     </div>
                     <div className=" w-full">
                         <div className="flex justify-between">
-                            <h2 className='text-xs text-slate-400'>{totalSpend ? totalSpend : 0} Spent</h2>
-                            <h2 className='text-xs text-slate-400'>{amount - totalSpend} Remaining</h2>
+                            <h2 className='text-xs text-slate-400'>&#8377;{totalSpend ? totalSpend : 0} Spent</h2>
+                            <h2 className='text-xs text-slate-400'>&#8377;{amount - totalSpend} Remaining</h2>
                         </div>
                         <div className="w-full bg-slate-300 h-4 mt-5 rounded-full relative">
-                            <div className="bg-primary h-4 mt-5 rounded-full relative" style={{ width: `${spendPercentage()}%` }}></div>
+                            <div className="bg-primary h-4 rounded-full border" style={{ width: `${spendPercentage()}%` }}></div>
                         </div>
                     </div>
                 </div>

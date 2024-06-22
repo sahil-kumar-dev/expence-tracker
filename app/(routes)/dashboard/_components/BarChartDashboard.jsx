@@ -12,7 +12,7 @@ const BarChartDashboard = ({ budgetList }) => {
 				<YAxis />
 				<Tooltip />
 				<Legend />
-				<Bar dataKey="totalSpend" fill="#4545d2" />
+				<Bar dataKey="totalSpend" fill="#87d3ff" />
 				<Bar dataKey="amount" fill="#4845d2" />
 			</BarChart>
 		</div>

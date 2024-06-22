@@ -29,7 +29,7 @@ const AddExpenses = ({ budgetId, refreshBudget }) => {
     }
 
     return (
-        <div className='p-5 border rounded-lg'>
+        <div className='p-5 border rounded-lg grid gap-4'>
             <h2 className='font-bold text-lg'>Add Expense</h2>
             <div className="mt-2">
                 <h2 className='text-black font-medium '>Expense Name</h2>

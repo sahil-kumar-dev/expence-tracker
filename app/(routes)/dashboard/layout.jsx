@@ -17,7 +17,7 @@ const DashBoardLayout = ({ children }) => {
 
     useEffect(() => {
         user && checkUserBudget()
-    },[user])
+    }, [user])
 
 
     const checkUserBudget = async () => {
@@ -25,10 +25,9 @@ const DashBoardLayout = ({ children }) => {
             .from(Budgets)
             .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
 
-        if (result?.length == 0){
+        if (result?.length == 0) {
             router.replace('/dashboard/budget')
         }
-        console.log(result)
     }
 
     return (
@@ -36,9 +35,11 @@ const DashBoardLayout = ({ children }) => {
             <div className="fixed md:w-64 hidden md:block border">
                 <SideNav />
             </div>
-            <div className="md:ml-64 ">
+            <div className="md:ml-64 relative">
                 <DashBoardHeader />
-                {children}
+                <div className="p-6">
+                    {children}
+                </div>
             </div>
         </div>
     )
