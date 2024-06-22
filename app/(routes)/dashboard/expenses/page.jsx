@@ -8,7 +8,7 @@ import { useUser } from '@clerk/nextjs'
 import { desc, eq } from 'drizzle-orm'
 import ExpensesSkeleton from './_components/ExpensesSkeleton'
 
-const page = () => {
+const Page = () => {
 
     const [expensesList, setExpensesList] = useState([])
 
@@ -46,4 +46,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

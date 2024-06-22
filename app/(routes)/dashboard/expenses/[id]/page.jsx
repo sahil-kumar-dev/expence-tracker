@@ -28,7 +28,7 @@ import EditBudget from '../_components/EditBudget'
 import ExpensesSkeleton from '../_components/ExpensesSkeleton'
 
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
 
     const { user } = useUser()
 
@@ -132,4 +132,4 @@ const page = ({ params }) => {
     )
 }
 
-export default page
+export default Page

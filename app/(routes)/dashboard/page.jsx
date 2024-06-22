@@ -11,7 +11,7 @@ import { BudgetItem } from './budget/_components/BudgetItem'
 import ExpenseListTable from './expenses/_components/ExpenseListTable'
 
 
-const page = () => {
+const Page = () => {
 
 	const { user } = useUser()
 
@@ -78,4 +78,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page
