@@ -11,7 +11,7 @@ const Header = () => {
     const { user, isSignedIn } = useUser()
 
     return (
-        <div className="p-5 flex justify-between items-center shadow-md sticky top-0" >
+        <div className="p-5 flex justify-between items-center shadow-md sticky top-0 bg-white" >
             <Image
                 src='./logo.svg'
                 width={160}
