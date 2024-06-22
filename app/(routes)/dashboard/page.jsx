@@ -9,6 +9,8 @@ import { Budgets, Expenses } from '@/utils/schema'
 import BarChartDashboard from './_components/BarChartDashboard'
 import { BudgetItem } from './budget/_components/BudgetItem'
 import ExpenseListTable from './expenses/_components/ExpenseListTable'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 
 const Page = () => {
@@ -20,7 +22,8 @@ const Page = () => {
 
 	useEffect(() => {
 		user && getBudgetList()
-	})
+		user && getAllExpense()
+	},[budgetList,expensesList])
 
 	const getBudgetList = async () => {
 		const result = await db.select({
@@ -34,7 +37,7 @@ const Page = () => {
 			.groupBy(Budgets.id)
 
 		setBudgetList(result)
-		getAllExpense()
+		
 	}
 
 	const getAllExpense = async () => {
@@ -57,23 +60,33 @@ const Page = () => {
 			<h2 className='font-bold text-3xl'>Hi, {user?.fullName}</h2>
 			<p className='text-gray-500 '>Here'w what happening with your money, Let's manage your Expense</p>
 			<CardsInfo budgetList={budgetList} />
-			<div className="grid md:grid-cols-3 gap-5">
-				<div className="md:col-span-2 ">
-					<div className="border flex items-center justify-center rounded-lg p-5 flex-col">
-						<BarChartDashboard budgetList={budgetList} />
+			{
+				budgetList && budgetList.length > 0 ?
+					<div className="grid md:grid-cols-3 gap-5">
+						<div className="md:col-span-2 ">
+							<div className="border flex items-center justify-center rounded-lg p-5 flex-col">
+								<BarChartDashboard budgetList={budgetList} />
+							</div>
+							<h2 className='font-bold text-2xl mt-4'>Recent Expences</h2>
+							<ExpenseListTable expenceList={expensesList} />
+						</div>
+						<div className="grid gap-4">
+							<h2 className='text-2xl font-bold'>Latest Budgets</h2>
+							{
+								budgetList && budgetList.map((budget, idx) => {
+									return <BudgetItem key={idx}  {...budget} />
+								})
+							}
+						</div>
 					</div>
-					<h2 className='font-bold text-2xl mt-4'>Recent Expences</h2>
-					<ExpenseListTable expenceList={expensesList} />
-				</div>
-				<div className="grid gap-4">
-					<h2 className='text-2xl font-bold'>Latest Budgets</h2>
-					{
-						budgetList && budgetList.map((budget, idx) => {
-							return <BudgetItem key={idx}  {...budget} />
-						})
-					}
-				</div>
-			</div>
+					:
+					<div className="flex items-center flex-col mt-8 gap-6">
+						<h2 className='text-3xl font-bold'>Please add a Budget!</h2>
+						<Link href={'/dashboard/budget'}>
+							<Button>Add a Budget</Button>
+						</Link>
+					</div>
+			}
 		</div>
 	)
 }

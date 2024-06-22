@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideNav from './_components/SideNav'
 import DashBoardHeader from './_components/DashBoardHeader'
 import { db } from '@/utils/dbConfig'
@@ -8,6 +8,7 @@ import { Budgets } from '@/utils/schema'
 import { eq } from 'drizzle-orm'
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
+import MobileSideNav from './_components/MobileSideNav'
 
 const DashBoardLayout = ({ children }) => {
 
@@ -18,6 +19,8 @@ const DashBoardLayout = ({ children }) => {
     useEffect(() => {
         user && checkUserBudget()
     }, [user])
+
+    const [open, setOpen] = useState(false)
 
 
     const checkUserBudget = async () => {
@@ -32,11 +35,12 @@ const DashBoardLayout = ({ children }) => {
 
     return (
         <div>
-            <div className="fixed md:w-64 hidden md:block border">
+            <div className="fixed md:w-64 hidden lg:block border">
                 <SideNav />
             </div>
-            <div className="md:ml-64 relative">
-                <DashBoardHeader />
+            <MobileSideNav open={open} toggleOpen={()=>setOpen(prev=>!prev)} />
+            <div className="lg:ml-64 relative">
+                <DashBoardHeader toggleOpen={()=>setOpen(prev=>!prev)} />
                 <div className="p-6">
                     {children}
                 </div>

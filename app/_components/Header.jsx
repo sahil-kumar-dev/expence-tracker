@@ -16,6 +16,7 @@ const Header = () => {
                 src='./logo.svg'
                 width={160}
                 height={100}
+                className=''
             />
             {
                 isSignedIn ?

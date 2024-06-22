@@ -8,41 +8,42 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import { useEffect } from 'react'
 
+export const menuList = [
+    {
+        id: 1,
+        name: 'Dashboard',
+        icon: LayoutGrid,
+        path: '/dashboard'
+    },
+    {
+        id: 2,
+        name: "Budget",
+        icon: PiggyBank,
+        path: '/dashboard/budget'
+    },
+    {
+        id: 3,
+        name: "Expense",
+        icon: ReceiptText,
+        path: '/dashboard/expenses'
+    },
+    {
+        id: 4,
+        name: "Upgrade",
+        icon: ShieldCheck,
+        path: '/dashboard/upgrade'
+    },
+]
+
 const SideNav = () => {
 
-    const menuList = [
-        {
-            id: 1,
-            name: 'Dashboard',
-            icon: LayoutGrid,
-            path: '/dashboard'
-        },
-        {
-            id: 2,
-            name: "Budget",
-            icon: PiggyBank,
-            path: '/dashboard/budget'
-        },
-        {
-            id: 3,
-            name: "Expense",
-            icon: ReceiptText,
-            path: '/dashboard/expenses'
-        },
-        {
-            id: 4,
-            name: "Upgrade",
-            icon: ShieldCheck,
-            path: '/dashboard/upgrade'
-        },
-    ]
 
     const params = usePathname()
 
 
     return (
         <div className="h-screen border shadow-sm p-5">
-            <Image src="./logo.svg" height={100} width={160} />
+            <Image src="./logo.svg" height={100} width={160} alt='logo' />
             <div className="mt-5 grid gap-4">
                 {
                     menuList.map((item, idx) => (
