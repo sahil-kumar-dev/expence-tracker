@@ -10,7 +10,7 @@ import ExpenseListTable from '../_components/ExpenseListTable'
 import { BudgetItem } from '../../budget/_components/BudgetItem'
 import { BudgetItemSkeleton } from '../../budget/_components/BudgetItemSkeleton'
 import { Button } from '@/components/ui/button'
-import { Trash } from 'lucide-react'
+import { PenBox, Trash } from 'lucide-react'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import EditBudget from '../_components/EditBudget'
 
 
 const page = ({ params }) => {
@@ -66,11 +67,11 @@ const page = ({ params }) => {
     const deleteBudget = async () => {
 
         const deleteExpense = await db.delete(Expenses)
-                            .where(eq(Expenses.budgetId,params.id))
+            .where(eq(Expenses.budgetId, params.id))
 
         const result = await db.delete(Budgets)
-                        .where(eq(Budgets.id,params.id))
-                        .returning()
+            .where(eq(Budgets.id, params.id))
+            .returning()
 
         toast('Budget Deleted!')
         route.replace('/dashboard/budget')
@@ -97,11 +98,13 @@ const page = ({ params }) => {
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={()=>deleteBudget()}>Continue</AlertDialogAction>
+                            <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>
-
+            </span>
+            <span className="">
+               <EditBudget budgetInfo={budgetInfo} refreshBudget={()=>getBudgetInfo()} />
             </span>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {
